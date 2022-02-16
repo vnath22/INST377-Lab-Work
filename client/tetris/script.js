@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino];
 
   let currentPosition = 4;
-  const currentRotation = 0;
+  let currentRotation = 0;
 
   // select the tetromino randomly and its first rotation
   let random = Math.floor(Math.random() * theTetrominoes.length);
@@ -76,16 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // make the tetromino move down every second
-  // timerId = setInterval(moveDown, 1000);
-
-  // move down function
-  function moveDown() {
-    undraw();
-    currentPosition += width;
-    draw();
-  }
-
   // show up-next tetromino in mini-grid
   const displaySquares = document.querySelectorAll('.mimi-grid div');
   const displayWidth = 4;
@@ -102,10 +92,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // display the stage in the mini-grid display
   function displayShape() {
+    // remove any trace of tetrimino from the entire grid
     displaySquares.forEach((square) => {
       square.classList.remove('tetromino');
+      square.style.backgroundColor = '';
     });
-    upNextTetrominoes[nextRandom].forEach((index) => { displaySquares[displayIndex + index].classList.add('tetromino'); });
+    upNextTetrominoes[nextRandom].forEach((index) => {
+      displaySquares[displayIndex + index].classList.add('tetromino');
+      displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom];
+    });
   }
 
   // add score
@@ -119,9 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
         row.forEach((index) => {
           squares[index].classList.remove('taken');
           squares[index].classList.remove('tetromino');
+          squares[index].style.backgroundColor = '';
         });
         const squaresRemoved = squares.splice(i, width);
-        // eslint-disable-next-line no-const-assign
         squares = squaresRemoved;
         squares.forEach((cell) => grid.appendChild(cell));
       }
@@ -143,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // start a new tetromino falling
       random = nextRandom;
       nextRandom = Math.floor(Math.random() * theTetrominoes.length);
-      current = theTetrominoes[random][currentPosition];
+      current = theTetrominoes[random][currentRotation];
       currentPosition = 4;
       draw();
       displayShape();
@@ -152,19 +147,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // move down function
+  function moveDown() {
+    undraw();
+    currentPosition += width;
+    draw();
+    freeze();
+  }
+
   // move the tetromino left, unless is at the edge or there is a blockage
   function moveLeft() {
     undraw();
     const isAtLeftEdge = current.some((index) => (currentPosition + index) % width === 0);
 
-    if (!isAtLeftEdge) {
-      currentPosition -= 1;
-    }
+    if (!isAtLeftEdge) currentPosition -= 1;
 
-    if (current.some((index) => square[currentPosition + index].classList.contains('taken'))) {
+    if (current.some((index) => squares[currentPosition + index].classList.contains('taken'))) {
       currentPosition += 1;
     }
-
     draw();
   }
 
@@ -175,39 +175,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!isAtRightEdge) currentPosition += 1;
 
-    if (current.some((index) => square[currentPosition + index].classList.contains('taken'))) {
+    if (current.some((index) => squares[currentPosition + index].classList.contains('taken'))) {
       currentPosition -= 1;
     }
-
     draw();
   }
 
   // rotate the tetromino
   function rotate() {
     undraw();
-    // eslint-disable-next-line no-plusplus
-    currentPosition++;
-    // eslint-disable-next-line max-len
-    if (currentPosition === current.length) { // if the current rotation get to 4, make it go back to 0
-      currentPosition = 0;
+    currentRotation++;
+    if (currentRotation === current.length) {
+      currentRotation = 0;
     }
     current = theTetrominoes[random][currentRotation];
     draw();
   }
 
+  // assign function to keyCodes
   function control(e) {
-    if (e.keyCodes === 37) {
+    if (e.keyCode === 37) {
       moveLeft();
-    } else if (e.keyCodes === 38) {
+    } else if (e.keyCode === 38) {
       rotate();
-    } else if (e.keyCodes === 39) {
+    } else if (e.keyCode === 39) {
       moveRight();
-    } else if (e.keyCodes === 40) {
+    } else if (e.keyCode === 40) {
       moveDown();
     }
   }
-
-  // assign functions to keyCodes
 
   document.addEventListener('keyup', control);
 
