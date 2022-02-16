@@ -178,6 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+
+    
     // //add score
     // function addScore() {
     //     for()
