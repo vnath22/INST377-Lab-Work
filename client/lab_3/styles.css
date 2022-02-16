@@ -126,42 +126,7 @@
     width: 300px;
 }
 
-/* Mobile style*/
 
-@media only screen and (max-width: 400px) {
-    
-    .image_1{
-        flex: 1;
-        width: auto;
-        order: 2;
-    }
-    
-    .image_2{
-        flex: 1;
-        width: auto;
-        order: -2;
-    }
-    
-    .image_3{
-        flex: 1;
-        width: auto;
-        order: 1;
-    }
-    
-    .image_4{
-        flex: 1;
-        width: auto;
-        order: 0;
-    }
-    
-    .image_5{
-        flex: 1;
-        width: auto;
-        order: -1;
-    }
-    
-
-}
 
 
 
