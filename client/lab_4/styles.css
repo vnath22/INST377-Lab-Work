@@ -1,0 +1,169 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header_1{
+    background-color: rgba(0,139, 139,0.8);
+}
+
+.menu-container{
+    color: #fff;
+    background-color: #5995DA;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.menu{
+    border: 1px solid #fff;
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.links{
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.database_d{
+    margin-left: auto;
+}
+
+.mainpage{
+    margin-left: 20px;
+}
+
+.header-container{
+    color: #5995DA;
+    background-color: #D6E9FE;
+    display: flex;
+    justify-content: center;
+}
+
+.header{
+    width: 900px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project_link, .mygithub{
+    align-self: flex-end;
+    margin-bottom: 20px;
+}
+.photo-grid-container{
+    display: flex;
+    justify-content: center;
+}
+
+.carousel_item{
+    display: none;
+}
+
+.carousel_item img{
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+.carousel_actions{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel_actions button{
+    border-radius: 50px;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+
+}
+
+.carousel_actions button#carousel_button_prev{
+    margin-right: 20px;
+}
+
+.carousel_actions button#carousel_button_next{
+    margin-right: 20px;
+}
+
+.photo-grid{
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.image_1{
+    border: 1px solid #fff;
+    width: 300px;
+    height: 300px;
+    order: 1;
+}
+
+.image_2{
+    border: 1px solid #fff;
+    width: 300px;
+    height: 300px;
+    order: -1;
+}
+
+.image_3{
+    border: 1px solid #fff;
+    width: 300px;
+    height: 300px;
+    order: -2;
+}
+
+.image_4{
+    border: 1px solid #fff;
+    width: 300px;
+    height: 300px;
+    order: 2;
+}
+
+.image_5{
+    border: 1px solid #fff;
+    width: 300px;
+    height: 300px;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-item{
+    border: 1px solid #fff;
+    background-color: #D6E9FE;
+    height: 200px;
+    flex: 1;
+}
+
+.item_2{
+    flex: 2;
+}
+
+.item_1, .item_3{
+    background-color: #5995DA;
+    flex: initial;
+    width: 300px;
+}
+
+
+
+
+
