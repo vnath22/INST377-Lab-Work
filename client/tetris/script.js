@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid');
-  const squares = Arrary.from(document.querySelectorAll('.grid div'));
-  const scoreDisplay = document.querySelect('#score');
-  const startBtn = document.querySelect('#start-button');
+  let squares = Array.from(document.querySelectorAll('.grid div'));
+  const scoreDisplay = document.querySelector('#score');
+  const startBtn = document.querySelector('#start-button');
   const width = 10;
   let nextRandom = 0;
   let timerId;
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // select the tetromino randomly and its first rotation
   let random = Math.floor(Math.random() * theTetrominoes.length);
-  let current = theTetrominoes[random][0];
+  let current = theTetrominoes[random][currentRotation];
 
   // draw the tetromino
   function draw() {
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // show up-next tetromino in mini-grid
-  const displaySquares = document.querySelectorAll('.mimi-grid div');
+  const displaySquares = document.querySelectorAll('.mini-grid div');
   const displayWidth = 4;
   const displayIndex = 0;
 
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
           squares[index].style.backgroundColor = '';
         });
         const squaresRemoved = squares.splice(i, width);
-        squares = squaresRemoved;
+        squares = squaresRemoved.concat(squares);
         squares.forEach((cell) => grid.appendChild(cell));
       }
     }
@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function moveDown() {
     undraw();
     currentPosition += width;
+    console.log(currentPosition);
     draw();
     freeze();
   }

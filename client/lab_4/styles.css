@@ -110,7 +110,11 @@
     margin-right: 20px;
 }
 
-0Keyframes fadeVisibility{
+.carousel .carousel_actions button:focus{
+    background-color: yellow;
+}
+
+@keyframes fadeVisibility{
     0%{
         opacity: 0;
     }
