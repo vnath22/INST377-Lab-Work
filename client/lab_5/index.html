@@ -5,8 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 5</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+    <div class="container">
+    <header class="speaker-form-header">
+        <h2> Victoria Nathaniel's Lab 5</h2>
+    </header>
+
+    <form action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json" method="GET" class="speaker-form">
+        <div class="form-row">
+            <label for="full-name">First Name</label>
+            <input id="full-name" name="full-name" type="text"/>
+        </div>
+
+        <div class="form-row">
+            <label for="food-perference">Food Perference</label>
+            <input id="food-perference" name="food-perference" type="text"/>
+        </div>
+
+        <fieldset class="legacy-form-row">
+            <legend>Veggie or Vegan?</legend>
+                    
+            <label for="food-type-1" class="food-type">Yes</label>
+            <input id="food-type-1"
+                    name="food-type"
+                    type="radio"
+                    value="yes"/>
+                    
+            <label for="food-type-2" class="food-type">No</label>
+            <input id="food-type-2" 
+                    name="food-type" 
+                    type="radio"
+                    value="no"/>  
+        </fieldset>
+
+        <div class="form-row">
+            <button> Submit</button>
+        </div>
+    </form>
+    <header class="speaker-form">This is going to be something in two weeks.</header>
     
+<script src="script.js"></script>
 </body>
 </html>
