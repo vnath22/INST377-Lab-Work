@@ -9,44 +9,49 @@
     <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+   <div class="wrapper">
     <div class="container">
-    <header class="speaker-form-header">
-        <h2> Victoria Nathaniel's Lab 5</h2>
-    </header>
-
-    <form action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json" method="GET" class="speaker-form">
-        <div class="form-row">
-            <label for="full-name">First Name</label>
-            <input id="full-name" name="full-name" type="text"/>
-        </div>
-
-        <div class="form-row">
-            <label for="food-perference">Food Perference</label>
-            <input id="food-perference" name="food-perference" type="text"/>
-        </div>
-
-        <fieldset class="legacy-form-row">
-            <legend>Veggie or Vegan?</legend>
-                    
-            <label for="food-type-1" class="food-type">Yes</label>
-            <input id="food-type-1"
-                    name="food-type"
-                    type="radio"
-                    value="yes"/>
-                    
-            <label for="food-type-2" class="food-type">No</label>
-            <input id="food-type-2" 
-                    name="food-type" 
-                    type="radio"
-                    value="no"/>  
-        </fieldset>
-
-        <div class="form-row">
-            <button> Submit</button>
-        </div>
-    </form>
-    <header class="speaker-form">This is going to be something in two weeks.</header>
+    <h1 class="title">Victoria Nathaniel's Lab 5</h1>
     
+    
+    <form action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json" method="GET" class="field">
+        <div class="field">
+            <label class="label">First Name</label>
+            <div class="control">
+                <input class="input" type="text" name="name">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Food Perference</label>
+            <div class="control">
+                <input class="input" type="text" name="food-perference">
+            </div>
+        </div>
+        
+        <div class="field">
+            <div class="control">
+                <label>Veggie or Vegan?</label>
+                
+                <label class="radio">
+                <input type="radio" name="question">Yes
+                </label>
+                
+                <label class="radio">
+                <input type="radio" name="question">No
+                </label>
+            </div>
+          </div>
+
+        <div class="field is-grouped">
+            <div class="control">
+              <button class="button">Submit</button>
+            </div>
+    </form>
+    
+    <p class="section_2">This is going to be something in two weeks.</p>
+     </div>
+    </div>
 <script src="script.js"></script>
 </body>
 </html>
