@@ -44,16 +44,14 @@ form{
   margin-left: 100px;
 }
 
-.radio-label {
-  display:block;
-  font-size: 14px;
-}
-
-.radio-label input[type="radio"]{
+.radio {
+  display: block;
   margin-bottom: 5px;
 }
 
-.section_3{
+
+
+.col{
   background-color: white;
   width: 50%;
   padding: 20px;

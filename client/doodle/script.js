@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 // const e = require("express");
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -90,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
       doodlerBottomSpace += 20;
       doodler.style.bottom = `${platformBottomSpace}px`;
       if (doodlerBottomSpace > startPoint + 200) {
+        // eslint-disable-next-line no-use-before-define
         fall();
       }
     }, 30);
