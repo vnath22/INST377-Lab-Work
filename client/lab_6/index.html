@@ -10,47 +10,46 @@
 </head>
 <body>
    <div class="wrapper">
-        <div class="container">
-            <div class="title">Victoria Nathaniel's Lab 6</div>
-            
-            <form method="GET" class="field">
-                <div class="field">
-                    <label class="label">First Name</label>
-                    <div class="control">
-                        <input class="input" type="text" name="name">
-                    </div>
-                </div>
+      <div class="container">
+        <div class="title">Victoria Nathaniel's Lab 6</div>
+      
+        <div class="columns">
+        <div class="column is-narrow">
 
-                <div class="field">
-                    <label class="label">Food Perference</label>
-                    <div class="control">
-                        <input class="input" type="text" name="food-perference">
-                    </div>
-                </div>
-                
-                <div class="field">
-                    <div class="control">
-                        <label>Veggie or Vegan?</label>
-                        
-                        <label class="radio-label">
-                            <input type="radio" name="answer">Yes
-                        </label>
-                        
-                        <label class="radio">
-                            <input type="radio" name="answer">No
-                        </label>
-                    </div>
-                </div>
+          <form id= "form" method="GET" class="main_form box">
+            <div class="field">
+              <label class="label">First Name</label>
+              <div class="control">
+                <input class="input" type="text">
+              </div>
+            </div>
+              
+          <div class="field">
+            <label class="label">Food Perference</label>
+            <div class="control">
+              <input class="input" type="text">
+            </div>
+          </div>
+              
+          <div class="legacy-form-row">
+            <legend>Veggie or Vegan?</legend>
+            <input id='yes' name='answer' type='radio' value='yes' />
+            <label for='yes' class='radio-label'>Yes</label>
+            <input id='no' name='answer' type='radio' value='no'/> 
+            <label for='no' class='radio-label'>No</label>
+          </div>
 
-                <div class="field is-grouped">
-                    <div class="control">
-                    <button class="button">Submit</button>
-                    </div>
-                </div>
-            </form>
-            
-            <div class="section_3">This is going to be something in two weeks.</div>
-     </div>
+          <button class="button">Submit</button>
+
+          </form>
+        </div>
+
+        <div class="column is-two-thirds">
+          <div id="third_box" class="box">This is going to be something in two weeks.</div>
+          </div>
+        </div>
+
+      </div>
     </div>
 <script src="script.js"></script>
 </body>
