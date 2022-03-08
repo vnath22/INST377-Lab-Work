@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html{
+  min-height: 100%;
+  background-color: darkslategray
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -36,12 +41,12 @@ body {
   margin-top: 25px;
 }
 
-form{
+#form{
   background-color: rgb(221, 225, 226);
-  width: 25%;
+  min-width: 250px;
   border-radius: 4px;
   padding: 15px;
-  margin-left: 100px;
+  margin-left: 50px;
 }
 
 .radio {
@@ -49,23 +54,18 @@ form{
   margin-bottom: 5px;
 }
 
-
-
-.col{
-  background-color: white;
-  width: 50%;
-  padding: 20px;
-  margin-left: 37%;
-  margin-bottom: 29%;
-  margin-top: -15%;
-  border-radius: 4px;
-}
-
 .button {
-  font-size: 16px;
   background-color: #7ec9ac;
   border: none;
-  border-radius: 3px;
-  padding: 10px;
+  margin-top: 10px;
   cursor: pointer;
+}
+
+.columns{
+  align-items: center;
+  justify-content: center;
+}
+
+#third_box{
+  margin-left: 50px;
 }
