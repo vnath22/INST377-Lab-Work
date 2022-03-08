@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable operator-linebreak */
 /* eslint-disable func-names */
