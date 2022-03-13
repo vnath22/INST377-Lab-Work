@@ -16,7 +16,7 @@
         <div class="columns">
         <div class="column is-narrow">
 
-          <form id= "form" method="GET" class="main_form box">
+          <form id="form" method="GET" class="main_form box">
             <div class="field">
               <label class="label">First Name</label>
               <div class="control">
@@ -24,29 +24,32 @@
               </div>
             </div>
               
-          <div class="field">
-            <label class="label">Food Perference</label>
-            <div class="control">
-              <input class="input" type="text">
+            <div class="field">
+              <label class="label">Food Perference</label>
+              <div class="control">
+                <input class="input" type="text">
+              </div>
             </div>
-          </div>
               
-          <div class="legacy-form-row">
-            <legend>Veggie or Vegan?</legend>
-            <input id='yes' name='answer' type='radio' value='yes' />
-            <label for='yes' class='radio-label'>Yes</label>
-            <input id='no' name='answer' type='radio' value='no'/> 
-            <label for='no' class='radio-label'>No</label>
-          </div>
+            <div class="legacy-form-row">
+              <legend>Veggie or Vegan?</legend>
+              <input id='yes' name='answer' type='radio' value='yes' />
+              <label for='yes' class='radio-label'>Yes</label>
+              <input id='no' name='answer' type='radio' value='no'/> 
+              <label for='no' class='radio-label'>No</label>
+            </div>
 
-          <button class="button">Submit</button>
-
+            <div class="submit_button"></div>
+            <button class="button" type="submit">Submit</button>
           </form>
         </div>
 
         <div class="column is-two-thirds">
-          <div id="third_box" class="box">This is going to be something in two weeks.</div>
+          <div id="third_box" class="box">
+            <ul class="resto-list"></ul>
+            <h2>Restaurant List</h2>
           </div>
+        </div>
         </div>
 
       </div>
