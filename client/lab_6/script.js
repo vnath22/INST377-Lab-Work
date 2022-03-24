@@ -53,7 +53,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       // arrayFromJson.data - we're accessing a key called 'data' on the returned object
       // it contains all 1,000 records we need
       const restoArray = restoArrayMake(arrayFromJson);
-      // console.log(restoArray);
+      console.log(restoArray);
       createHtmlList(restoArray);
     });
   }
