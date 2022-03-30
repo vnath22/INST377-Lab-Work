@@ -9,8 +9,6 @@ function getRandomIntInclusive(min, max) {
 }
 
 function restoArrayMake(dataArray) {
-  // console.log('fired dataHandler');
-  // console.table(dataArray); // this is called "dot notation"
   const range = [...Array(15).keys()];
   const listItems = range.map((item, index) => {
     const restNum = getRandomIntInclusive(0, dataArray.length);
@@ -21,8 +19,6 @@ function restoArrayMake(dataArray) {
 }
 
 function createHtmlList(collection) {
-  // console.log('fired HTML creator');
-  // console.log('collection');
   const targetList = document.querySelector('.resto-list');
   targetList.innerHTML = '';
   collection.forEach((item) => {
@@ -47,13 +43,12 @@ async function mainEvent() { // the async keyword means we can make API requests
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
   // it is better not to display this until the data has loaded
 
-  // console.log(arrayFromJson);
-
   if (arrayFromJson.length > 0) {
     submit.style.display = 'block';
 
     let currentArray = [];
 
+    // Restaurant Name
     resto.addEventListener('input', async (event) => {
       console.log(event.target.value);
 
@@ -70,24 +65,20 @@ async function mainEvent() { // the async keyword means we can make API requests
       createHtmlList(selectedResto);
     });
 
+    // Zipcode
     zipcode.addEventListener('input', async (event) => {
       console.log(event.target.value);
 
       if (currentArray.length < 1) {
         return;
       }
-      // const zipNum = currentArray.filter((item) => {
-      //   const num = item.name.containsNumber();
-      //   const numValue = event.target.value.containsNumber();
-      //   return num.includes(numValue);
-      // });
-      const selectedNum = currentArray.filter((item) => {
-        const lowerName = item.name.toLowerCase();
-        const lowerValue = event.target.value.toLowerCase();
-        return lowerName.includes(lowerValue);
+      const selectedZip = currentArray.filter((item) => {
+        const num = item.zip;
+        const zipVal = event.target.value;
+        return num.includes(zipVal);
       });
-      console.log(selectedNum);
-      createHtmlList(selectedNum);
+      console.log(selectedZip);
+      createHtmlList(selectedZip);
     });
 
     form.addEventListener('submit', async (submitEvent) => { // async has to be declared all the way to get an await
