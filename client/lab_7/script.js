@@ -19,7 +19,7 @@ function restoArrayMake(dataArray) {
 }
 
 function createHtmlList(collection) {
-  const targetList = document.querySelector('.resto-list');
+  const targetList = document.querySelector('#resto-list');
   targetList.innerHTML = '';
   collection.forEach((item) => {
     const {name} = item;
