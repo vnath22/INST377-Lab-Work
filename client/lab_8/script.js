@@ -11,7 +11,8 @@ function getRandomIntInclusive(min, max) {
 function restoArrayMake(dataArray) {
   const range = [...Array(15).keys()];
   const listItems = range.map((item, index) => {
-    const restNum = getRandomIntInclusive(0, dataArray.length);
+    const restNum = getRandomIntInclusive(0, dataArray.length - 1);
+
     return dataArray[restNum];
   });
 
@@ -30,8 +31,8 @@ function createHtmlList(collection) {
 }
 
 function initMap(targetId) {
-  const latlong = [38.7849, -76.8721];
-  const map = L.map(targetId).setView(latlong, 13);
+  const latLong = [38.7849, -76.8721];
+  const map = L.map(targetId).setView(latLong, 13);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -41,6 +42,20 @@ function initMap(targetId) {
     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
   }).addTo(map);
   return map;
+}
+
+function addMapMarkers(map, collection) {
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+
+  collection.forEach((item) => {
+    const point = item.geocoded_column_1?.coordinates;
+    console.log(item.geocoded_column_1?.coordinates);
+    L.marker([point[1], point[0]]).addTo(map);
+  });
 }
 
 // As the last step of your lab, hook this up to index.html
@@ -55,8 +70,8 @@ async function mainEvent() { // the async keyword means we can make API requests
   const retrievalVar = 'restaurants';
   submit.style.display = 'none';
 
-  if (localStorage.getItem(retrievalVar) === undefined) {
-    const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json'); // This accesses some data from our API
+  if (!localStorage.getItem(retrievalVar)) {
+    const results = await fetch('/api/foodServicesPG');
     const arrayFromJson = await results.json();
     console.log(arrayFromJson);
     localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
@@ -65,7 +80,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   const storedDataString = localStorage.getItem(retrievalVar);
   const storedDataArray = JSON.parse(storedDataString);
   console.log(storedDataArray);
-  // const arrayFromJson = {data: []}; // TODO
+  // const arrayFromJson = {data: []};
 
   if (storedDataArray.length > 0) {
     submit.style.display = 'block';
@@ -73,20 +88,21 @@ async function mainEvent() { // the async keyword means we can make API requests
     let currentArray = [];
 
     // Restaurant Name
-    resto.addEventListener('input', async (event) => {
+    resto.addEventListener('input', async(event) => {
       console.log(event.target.value);
 
       if (currentArray.length < 1) {
         return;
       }
 
-      const selectedResto = storedDataArray.filter((item) => {
+      const selectResto = storedDataArray.filter((item) => {
         const lowerName = item.name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
       });
-      console.log(selectedResto);
-      createHtmlList(selectedResto);
+
+      console.log(selectResto);
+      createHtmlList(selectResto);
     });
 
     // Zipcode
@@ -105,14 +121,14 @@ async function mainEvent() { // the async keyword means we can make API requests
       createHtmlList(selectedZip);
     });
 
-    form.addEventListener('submit', async (submitEvent) => { // async has to be declared all the way to get an await
-      submitEvent.preventDefault(); // This prevents your page from refreshing!
+    form.addEventListener('submit', async (submitEvent) => {
+      submitEvent.preventDefault();
       // console.log('form submission'); // this is substituting for a "breakpoint"
-      // arrayFromJson.data - we're accessing a key called 'data' on the returned object
-      // it contains all 1,000 records we need
+
       currentArray = restoArrayMake(storedDataArray);
       console.log(currentArray);
       createHtmlList(currentArray);
+      addMapMarkers(map, currentArray);
     });
   }
 }
