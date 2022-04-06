@@ -39,11 +39,11 @@ async function mainEvent() { // the async keyword means we can make API requests
   const zipcode = document.querySelector('#zipcode');
   submit.style.display = 'none';
 
-  const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json'); // This accesses some data from our API
+  const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
   // it is better not to display this until the data has loaded
 
-  if (arrayFromJson.length > 0) {
+  if (arrayFromJson.data.length > 0) {
     submit.style.display = 'block';
 
     let currentArray = [];
@@ -86,7 +86,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       // console.log('form submission'); // this is substituting for a "breakpoint"
       // arrayFromJson.data - we're accessing a key called 'data' on the returned object
       // it contains all 1,000 records we need
-      currentArray = restoArrayMake(arrayFromJson);
+      currentArray = restoArrayMake(arrayFromJson.data);
       console.log(currentArray);
       createHtmlList(currentArray);
     });
