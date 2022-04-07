@@ -70,7 +70,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   const retrievalVar = 'restaurants';
   submit.style.display = 'none';
 
-  if (!localStorage.getItem(retrievalVar)) {
+  if (localStorage.getItem(retrievalVar) === undefined) {
     const results = await fetch('/api/foodServicesPG');
     const arrayFromJson = await results.json();
     console.log(arrayFromJson);
