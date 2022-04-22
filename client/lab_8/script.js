@@ -92,11 +92,11 @@ async function mainEvent() { // the async keyword means we can make API requests
     resto.addEventListener('input', async(event) => {
       console.log(event.target.value);
 
-      if (currentArray.length < 1) {
+      if (storedDataArray.length < 1) {
         return;
       }
 
-      const selectResto = storedDataArray.filter((item) => {
+      const selectResto = currentArray.filter((item) => {
         const lowerName = item.name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
@@ -104,13 +104,14 @@ async function mainEvent() { // the async keyword means we can make API requests
 
       console.log(selectResto);
       createHtmlList(selectResto);
+      addMapMarkers(map, selectResto);
     });
 
     // Zipcode
     zipcode.addEventListener('input', async (event) => {
       console.log(event.target.value);
 
-      if (currentArray.length < 1) {
+      if (storedDataArray.length < 1) {
         return;
       }
       const selectedZip = currentArray.filter((item) => {
@@ -120,6 +121,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       });
       console.log(selectedZip);
       createHtmlList(selectedZip);
+      addMapMarkers(map, selectedZip);
     });
 
     form.addEventListener('submit', async (submitEvent) => {
